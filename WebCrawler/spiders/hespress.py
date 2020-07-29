@@ -45,7 +45,7 @@ class HespressSpider(scrapy.Spider):
         article['article_id'] = article_id
         article['author'] = author
         article['category'] = category
-        article['number_of_comments'] = number_of_comments
+        article['number_of_comments'] = int(number_of_comments[1: -1])
         article['timestamp'] = timestamp
         article['title'] = title
 
