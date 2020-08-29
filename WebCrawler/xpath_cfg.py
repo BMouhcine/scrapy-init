@@ -9,3 +9,7 @@ HES_AUTHOR_XPATH = '//div[@id="article_body"]//span[@class="story_author"]/text(
 HES_TIMESTAMP_XPATH = '//div[@id="article_body"]//span[@class="story_date"]/text()' ## TO EXTRACT ARTICLE TIME STORY SECTION.
 
 HES_NUMBER_OF_COMMENTS_XPATH = '//h4[@class="title_comments"]/span/text()' ## TO EXTRACT NUMBER OF COMMENTS SECTION.
+
+#HES_COMMENT_SECTION = '//div[@class="comment_list"]' ## TO EXTRACT TO COMMENTS LIST SECTION..
+
+HES_COMMENT_SECTION = '//div[@class="comment_body_in"]' ## TO EXTRACT COMMENT BODY.

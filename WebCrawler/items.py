@@ -17,3 +17,12 @@ class Article(scrapy.Item):
     author = scrapy.Field()
     timestamp = scrapy.Field()
     number_of_comments = scrapy.Field()
+    comments = scrapy.Field()
+
+class Comment(scrapy.Item):
+    article_id = scrapy.Field()
+    comment_number = scrapy.Field()
+    comment_content = scrapy.Field()
+    comment_author = scrapy.Field()
+    comment_timestamp = scrapy.Field()
+    comment_appreciation = scrapy.Field()

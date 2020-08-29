@@ -65,8 +65,9 @@ COOKIES_ENABLED = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'WebCrawler.pipelines.JLHesPipeline': 300,
-    'WebCrawler.pipelines.CsvHesPipeline': 400,
+    #'WebCrawler.pipelines.JLHesPipeline': 300,
+    'WebCrawler.pipelines.HesArticlePipeline': 300,
+    #'WebCrawler.pipelines.HesCommentsPipeline': 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
