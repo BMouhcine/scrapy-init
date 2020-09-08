@@ -2,7 +2,7 @@
 import scrapy
 from scrapy import Request
 from scrapy.http.response.html import HtmlResponse
-from WebCrawler.items import Article, Comment
+from WebCrawler.items import HesArticle, HesComment
 import WebCrawler.xpath_cfg as xp
 
 
@@ -33,7 +33,7 @@ class HespressSpider(scrapy.Spider):
             category = href_splitted[0]
 
             article_id = int(''.join([char for char in href_splitted[1] if char.isdigit()]))
-            article = Article()
+            article = HesArticle()
             article['title'] = title
             article['category'] = category
             article['article_id'] = article_id
@@ -51,15 +51,16 @@ class HespressSpider(scrapy.Spider):
         href = href.split('/')
         category = href[0]
         article_id = int(''.join([char for char in href[1] if char.isdigit()]))
+        article_link = response.request.url
 
-        article = Article()
+        article = HesArticle()
         article['article_id'] = article_id
         article['author'] = author
         article['category'] = category
         article['number_of_comments'] = int(number_of_comments[1: -1])
         article['timestamp'] = timestamp
         article['title'] = title
-
+        article['article_link'] = article_link
         comments_set = self.parse_comments(response, article_id)
         article['comments'] = comments_set
 
@@ -72,7 +73,7 @@ class HespressSpider(scrapy.Spider):
         comments_set = []
 
         for comment_section in response.xpath(xp.HES_COMMENT_SECTION):
-            comment = Comment()
+            comment = HesComment()
             #comment_section = comment_section.xpath(xp.HES_COMMENT_BODY)
             comment_number_buffer = comment_section.xpath('.//a/@name').extract_first()
             comment_number = int(''.join([char for char in comment_number_buffer if char.isdigit()]))

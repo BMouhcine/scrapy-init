@@ -25,9 +25,29 @@ HIB_ARTICLES_SECTIONS_XPATH = '//ul[@id="posts-container"]/li/div/h2/a' ## PARSE
 
 HIB_SINGLE_ARTICLE_TITLE_XPATH = '//div[@class="entry-header"]/h1/text()' ## HIB SINGLE ARTICLE TITLE.
 
-HIB_AUTHOR_XPATH = '//div[@class="entry-content entry clearfix"]/p/span/text()' ## TO EXTRACT ARTICLE AUTHOR SECTION.
+HIB_AUTHOR_XPATH_BAK = '//div[@class="entry-content entry clearfix"]/p/span/text()' ## TO EXTRACT ARTICLE AUTHOR SECTION.
+HIB_AUTHOR_XPATH_BAK3 = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::p or self::i or self::b]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or contains(text(), "هبة")]//text()|//p[contains(text(),"هبة")]//text()'
+HIB_AUTHOR_XPATH_BAK2 = '//div[@class="entry-content entry clearfix"]/p/text()'
 
-HIB_TIMESTAMP_XPATH = '//span[@class="date meta-item fa-before"]/text()' ## TO EXTRACT ARTICLE TIME STORY SECTION.
+HIB_AUTHOR_XPATH_BAK4 = '//div[@class="entry-content entry clearfix"]//p[starts-with(text(), "هبة بريس")]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and contains(text(), "-"))]//text()'
+
+HIB_AUTHOR_XPATH_BAK5 = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 150 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()'
+
+
+HIB_AUTHOR_XPATH_BAK6 = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 150 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()|//div[@dir="auto" and string-length(text())>1]//text()'
+
+HIB_AUTHOR_XPATH_BAK7 = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[contains(@style,"color:")]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 150 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()|//div[@dir="auto" and string-length(text())>1]//text()'
+
+HIB_AUTHOR_XPATH_BAK8 = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[contains(@style,"color:")]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 150 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()|//div[@dir="auto" and string-length(text())>1]//text()|//p//strong[string-length(text()) < 20]//text()'
+
+HIB_AUTHOR_XPATH = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[contains(@style,"color:")]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 150 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()|//div[@dir="auto" and string-length(text())>1]//text()|//p//strong[string-length(text()) < 20]//text()|//p//span//text()|//p[string-length(text()) > 1]//text()'
+
+
+HIB_WRITER_XPATH = '//script[@class="yoast-schema-graph"]/text()'
+
+HIB_OG_DESC = '//meta[@property="og:description"]/@content' ## GET THE ARTICLE DESC (HELPS TO FIND THE AUTHOR'S NAME).
+
+HIB_TIMESTAMP_XPATH = '//meta[@property="article:published_time"]/@content' ## TO EXTRACT ARTICLE TIME STORY SECTION.
 
 HIB_NUMBER_OF_COMMENTS_XPATH = '//span[@class="meta-comment meta-item fa-before"]/text()'
 

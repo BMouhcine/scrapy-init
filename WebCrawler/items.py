@@ -8,7 +8,7 @@
 import scrapy
 
 
-class Article(scrapy.Item):
+class HesArticle(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     title = scrapy.Field()
@@ -18,11 +18,32 @@ class Article(scrapy.Item):
     timestamp = scrapy.Field()
     number_of_comments = scrapy.Field()
     comments = scrapy.Field()
+    article_link = scrapy.Field()
 
-class Comment(scrapy.Item):
+class HesComment(scrapy.Item):
     article_id = scrapy.Field()
     comment_number = scrapy.Field()
     comment_content = scrapy.Field()
     comment_author = scrapy.Field()
     comment_timestamp = scrapy.Field()
     comment_appreciation = scrapy.Field()
+
+class HibArticle(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    title = scrapy.Field()
+    category = scrapy.Field()
+    article_id = scrapy.Field()
+    author = scrapy.Field()
+    writer = scrapy.Field()
+    timestamp = scrapy.Field()
+    number_of_comments = scrapy.Field()
+    comments = scrapy.Field()
+    article_link = scrapy.Field()
+
+class HibComment(scrapy.Item):
+    article_id = scrapy.Field()
+    comment_number = scrapy.Field()
+    comment_content = scrapy.Field()
+    comment_author = scrapy.Field()
+    comment_timestamp = scrapy.Field()

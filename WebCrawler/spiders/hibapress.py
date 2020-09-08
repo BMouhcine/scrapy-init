@@ -2,7 +2,8 @@
 import scrapy
 from scrapy import Request
 import WebCrawler.xpath_cfg as xp
-from WebCrawler.items import Article, Comment
+from WebCrawler.items import HibArticle, HibComment
+import json
 
 class HibapressSpider(scrapy.Spider):
     name = 'hibapress'
@@ -26,7 +27,7 @@ class HibapressSpider(scrapy.Spider):
             article_href = article_section.xpath("@href").extract_first()
             article_id = int(''.join([i for i in article_href if i.isdigit()]))
 
-            article = Article()
+            article = HibArticle()
             article['category'] = category
             article['article_id'] = article_id
             self.articles.append(article)
@@ -39,20 +40,34 @@ class HibapressSpider(scrapy.Spider):
         article_id = response.meta['article_id']
         title = response.xpath(xp.HIB_SINGLE_ARTICLE_TITLE_XPATH).extract_first()
         author = response.xpath(xp.HIB_AUTHOR_XPATH).extract_first()
+        if(category in [self.idx_nav_dict['99'], self.idx_nav_dict['11']]):
+            author = ""
+
+
         date = response.xpath(xp.HIB_TIMESTAMP_XPATH).extract_first()
         number_of_comments = response.xpath(xp.HIB_NUMBER_OF_COMMENTS_XPATH).extract_first()
 
-        article = Article()
+        json_data = response.xpath(xp.HIB_WRITER_XPATH).extract_first()
+        json_data = json.loads(json_data)
+        writer = json_data['@graph'][-1]['name']
+        article_link = response.request.url
+
+
+        article = HibArticle()
         article['article_id'] = article_id
         article['author'] = author
         article['category'] = category
         article['number_of_comments'] = number_of_comments
         article['timestamp'] = date
         article['title'] = title
-
+        article['writer'] = writer
+        article['article_link'] = article_link
         comments_set = self.parse_comments(response, article_id)
 
         article['comments'] = comments_set
+
+
+
         yield article
 
 
@@ -60,7 +75,7 @@ class HibapressSpider(scrapy.Spider):
     def parse_comments(self, response, article_id):
         comments_set = []
         for comment_section in response.xpath(xp.HIB_COMMENTS_SECTIONS_XPATH):
-            comment = Comment()
+            comment = HibComment()
             comment_number_buffer = comment_section.xpath(xp.HIB_COMMENT_NUMBER_XPATH).extract_first()
             comment_number = int(''.join([char for char in comment_number_buffer if char.isdigit()]))
 
