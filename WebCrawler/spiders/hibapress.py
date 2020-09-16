@@ -39,10 +39,24 @@ class HibapressSpider(scrapy.Spider):
         category = response.meta['cat']
         article_id = response.meta['article_id']
         title = response.xpath(xp.HIB_SINGLE_ARTICLE_TITLE_XPATH).extract_first()
-        author = response.xpath(xp.HIB_AUTHOR_XPATH).extract_first()
+
         if(category in [self.idx_nav_dict['99'], self.idx_nav_dict['11']]):
             author = ""
-
+        else:
+            #author = response.xpath(xp.HIB_AUTHOR_XPATH).extract_first()
+            prefix = xp.HIB_AUTHOR_XPATH_PREFIX
+            for suffix in xp.HIB_AUTHOR_XPATHS_SUFFIX_LIST:
+                author_xpath_exp = prefix + suffix
+                author = response.xpath(author_xpath_exp)
+                if len(author)>0:
+                    author = author.extract_first()
+                    
+                    print("-----------------------LENGTH------------------------")
+                    print("LENGTH : ", author)
+                    print("URL : ", response.request.url)
+                    print("XPATH : ", author_xpath_exp)
+                    print("-----------------------END LENGTH------------------------")
+                    break
 
         date = response.xpath(xp.HIB_TIMESTAMP_XPATH).extract_first()
         number_of_comments = response.xpath(xp.HIB_NUMBER_OF_COMMENTS_XPATH).extract_first()

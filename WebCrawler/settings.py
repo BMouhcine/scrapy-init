@@ -67,7 +67,7 @@ COOKIES_ENABLED = True
 ITEM_PIPELINES = {
     #'WebCrawler.pipelines.JLHesPipeline': 300,
     'WebCrawler.pipelines.HesArticlePipeline': 200,
-    'WebCrawler.pipelines.HibPipeline': 300,
+    'WebCrawler.pipelines.HibPipeline': 100,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
