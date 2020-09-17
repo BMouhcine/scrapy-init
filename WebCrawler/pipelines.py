@@ -14,23 +14,28 @@ class WebcrawlerPipeline(object):
 
 
 class HesArticlePipeline(object):
-    def __init__(self):
-        output_dir = 'output/'
-        os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-        self.csvfile = open(os.path.join(output_dir, 'hes_articles.csv'), 'w', newline='')
-        csv_columns = ['article_id', 'author', 'category', 'number_of_comments', 'timestamp', 'title', 'article_link']
-        self.writer = csv.DictWriter(self.csvfile, fieldnames=csv_columns)
-        self.writer.writeheader()
+    #def __init__(self):
+    def open_spider(self, spider):
+        if(spider.name == 'hespress'):
+            print("----------------------- {} SPIDER OPENED -----------------------------".format(spider.name))
+            output_dir = 'output/'
+            os.makedirs(os.path.dirname(output_dir), exist_ok=True)
+            self.csvfile = open(os.path.join(output_dir, 'hes_articles.csv'), 'w', newline='')
+            csv_columns = ['article_id', 'author', 'category', 'number_of_comments', 'timestamp', 'title', 'article_link']
+            self.writer = csv.DictWriter(self.csvfile, fieldnames=csv_columns)
+            self.writer.writeheader()
 
-        self.csvfile_comments = open(os.path.join(output_dir, 'hes_comments.csv'), 'w', newline='')
-        csv_columns_comments = ['article_id', 'comment_number', 'comment_content', 'comment_author', 'comment_timestamp', 'comment_appreciation']
-        self.writer_comments = csv.DictWriter(self.csvfile_comments, fieldnames=csv_columns_comments)
-        self.writer_comments.writeheader()
+            self.csvfile_comments = open(os.path.join(output_dir, 'hes_comments.csv'), 'w', newline='')
+            csv_columns_comments = ['article_id', 'comment_number', 'comment_content', 'comment_author', 'comment_timestamp', 'comment_appreciation']
+            self.writer_comments = csv.DictWriter(self.csvfile_comments, fieldnames=csv_columns_comments)
+            self.writer_comments.writeheader()
 
-
+    def close_spider(self, spider):
+        self.csvfile.close()
+        self.csvfile_comments.close()
 
     def process_item(self, item, spider):
-        #if(type(item).__name__=='Article'):
+
         if spider.name == 'hespress':
             if isinstance(item, HesArticle):
                 comments_set = item['comments']
@@ -44,18 +49,26 @@ class HesArticlePipeline(object):
 
 
 class HibPipeline(object):
-    def __init__(self):
-        output_dir = 'output/'
-        os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-        self.csvfile = open(os.path.join(output_dir, 'hib_articles.csv'), 'w', newline='')
-        csv_columns = ['article_id', 'author', 'writer','category', 'number_of_comments', 'timestamp', 'title', 'article_link']
-        self.writer = csv.DictWriter(self.csvfile, fieldnames=csv_columns)
-        self.writer.writeheader()
+#    def __init__(self):
 
-        self.csvfile_comments = open(os.path.join(output_dir, 'hib_comments.csv'), 'w', newline='')
-        csv_columns_comments = ['article_id', 'comment_number', 'comment_content', 'comment_author', 'comment_timestamp']
-        self.writer_comments = csv.DictWriter(self.csvfile_comments, fieldnames=csv_columns_comments)
-        self.writer_comments.writeheader()
+
+    def open_spider(self, spider):
+        if(spider.name == 'hibapress'):
+            print("----------------------- {} SPIDER OPENED -----------------------------".format(spider.name))
+            output_dir = 'output/'
+            os.makedirs(os.path.dirname(output_dir), exist_ok=True)
+            self.csvfile = open(os.path.join(output_dir, 'hib_articles.csv'), 'w', newline='')
+            csv_columns = ['article_id', 'author', 'writer','category', 'number_of_comments', 'timestamp', 'title', 'article_link']
+            self.writer = csv.DictWriter(self.csvfile, fieldnames=csv_columns)
+            self.writer.writeheader()
+
+            self.csvfile_comments = open(os.path.join(output_dir, 'hib_comments.csv'), 'w', newline='')
+            csv_columns_comments = ['article_id', 'comment_number', 'comment_content', 'comment_author', 'comment_timestamp']
+            self.writer_comments = csv.DictWriter(self.csvfile_comments, fieldnames=csv_columns_comments)
+            self.writer_comments.writeheader()
+    def close_spider(self, spider):
+        self.csvfile.close()
+        self.csvfile_comments.close()
 
     def process_item(self, item, spider):
         if spider.name == 'hibapress':

@@ -50,12 +50,6 @@ class HibapressSpider(scrapy.Spider):
                 author = response.xpath(author_xpath_exp)
                 if len(author)>0:
                     author = author.extract_first()
-                    
-                    print("-----------------------LENGTH------------------------")
-                    print("LENGTH : ", author)
-                    print("URL : ", response.request.url)
-                    print("XPATH : ", author_xpath_exp)
-                    print("-----------------------END LENGTH------------------------")
                     break
 
         date = response.xpath(xp.HIB_TIMESTAMP_XPATH).extract_first()
