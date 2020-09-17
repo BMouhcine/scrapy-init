@@ -31,8 +31,9 @@ class HesArticlePipeline(object):
             self.writer_comments.writeheader()
 
     def close_spider(self, spider):
-        self.csvfile.close()
-        self.csvfile_comments.close()
+        if(spider.name == 'hespress'):
+            self.csvfile.close()
+            self.csvfile_comments.close()
 
     def process_item(self, item, spider):
 
@@ -67,8 +68,9 @@ class HibPipeline(object):
             self.writer_comments = csv.DictWriter(self.csvfile_comments, fieldnames=csv_columns_comments)
             self.writer_comments.writeheader()
     def close_spider(self, spider):
-        self.csvfile.close()
-        self.csvfile_comments.close()
+        if(spider.name == 'hibapress'):
+            self.csvfile.close()
+            self.csvfile_comments.close()
 
     def process_item(self, item, spider):
         if spider.name == 'hibapress':

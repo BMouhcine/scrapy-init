@@ -51,7 +51,6 @@ class HibapressSpider(scrapy.Spider):
                 if len(author)>0:
                     author = author.extract_first()
                     break
-
         date = response.xpath(xp.HIB_TIMESTAMP_XPATH).extract_first()
         number_of_comments = response.xpath(xp.HIB_NUMBER_OF_COMMENTS_XPATH).extract_first()
 

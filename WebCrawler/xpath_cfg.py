@@ -26,27 +26,27 @@ HIB_ARTICLES_SECTIONS_XPATH = '//ul[@id="posts-container"]/li/div/h2/a' ## PARSE
 HIB_SINGLE_ARTICLE_TITLE_XPATH = '//div[@class="entry-header"]/h1/text()' ## HIB SINGLE ARTICLE TITLE.
 
 
-HIB_AUTHOR_XPATH = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[contains(@style,"color:")]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 150 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()|//div[@dir="auto" and string-length(text())>1]//text()|//p//strong[string-length(text()) < 20]//text()|//p//span//text()|//p[string-length(text()) > 1]//text()'
+HIB_AUTHOR_XPATH = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1][self::strong or self::b or self::i]//span[@style="color: #ff0000;"]//text()|//span[contains(@style,"color:")]//text()|//span[@style="color: #0000ff;"]//text()|//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()|//p[contains(text(),"هبة")]//text()|//p[string-length(text()) < 100 and string-length(text()) > 1]//text()|//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()|//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()|//p//span[@style="color: #ff0000;"]//text()|//div[@dir="auto"]//span//text()|//div//span[contains(text(), "هبة")]//text()|//div[@dir="auto" and string-length(text())>1]//text()|//p//strong[string-length(text()) < 20]//text()|//p//span//text()|//p[string-length(text()) > 1]//text()'
 
 
 HIB_AUTHOR_XPATH_PREFIX = '//div[@class="entry-content entry clearfix"]//input[starts-with(@value,"/details-")]/following-sibling::*[1]'
-HIB_AUTHOR_XPATH1 = '//span[@style="color: #ff0000;"]//text()'
-HIB_AUTHOR_XPATH2 = '//span[contains(@style,"color:")]//text()'
-HIB_AUTHOR_XPATH3 = '//span[@style="color: #0000ff;"]//text()'
+HIB_AUTHOR_XPATH1 = '//span[@style="color: #ff0000;" and string-length(text()) < 100]//text()'
+HIB_AUTHOR_XPATH2 = '//span[contains(@style,"color:") and string-length(text()) < 100]//text()'
+HIB_AUTHOR_XPATH3 = '//span[@style="color: #0000ff;" and string-length(text()) < 100]//text()'
 HIB_AUTHOR_XPATH4 = '//span[@style="color: #ff0000;" and contains(text(),"بقلم") or (contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ")))]//text()'
 
 #HIB_AUTHOR_XPATH5 = '//p[contains(text(),"هبة")]//text()'
 #HIB_AUTHOR_XPATH6 = '//p[string-length(text()) < 150 and string-length(text()) > 1]//text()'
 #HIB_AUTHOR_XPATH7 = '//p//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()'
 
-HIB_AUTHOR_XPATH5 = '[contains(text(),"هبة")]//text()'
-HIB_AUTHOR_XPATH6 = '[string-length(text()) < 150 and string-length(text()) > 1]//text()'
+HIB_AUTHOR_XPATH5 = '[contains(text(),"هبة") and string-length(text()) < 100]//text()'
+HIB_AUTHOR_XPATH6 = '[string-length(text()) < 100 and string-length(text()) > 1]//text()'
 HIB_AUTHOR_XPATH7 = '//span[@style="color: #ff0000;" and contains(text(), "هبة")]//text()'
 
 
 HIB_AUTHOR_XPATH8 = '//div[contains(text(), "هبة") and (contains(text(), "-") or contains(text(), "ـ"))]//text()'
 #HIB_AUTHOR_XPATH9 = '//p//span[@style="color: #ff0000;"]//text()'
-HIB_AUTHOR_XPATH9 = '//span[@style="color: #ff0000;"]//text()'
+HIB_AUTHOR_XPATH9 = '//span[@style="color: #ff0000;" and string-length(text()) < 100]//text()'
 HIB_AUTHOR_XPATH10 = '//div[@dir="auto"]//span//text()'
 HIB_AUTHOR_XPATH11 = '//div//span[contains(text(), "هبة")]//text()'
 HIB_AUTHOR_XPATH12 = '//div[@dir="auto" and string-length(text())>1]//text()'
@@ -57,7 +57,7 @@ HIB_AUTHOR_XPATH12 = '//div[@dir="auto" and string-length(text())>1]//text()'
 
 HIB_AUTHOR_XPATH13 = '//strong[string-length(text()) < 20]//text()'
 HIB_AUTHOR_XPATH14 = '//span//text()'
-HIB_AUTHOR_XPATH15 = '[string-length(text()) > 1]//text()'
+HIB_AUTHOR_XPATH15 = '[string-length(text()) > 1 and string-length(text()) < 100]//text()'
 
 HIB_AUTHOR_XPATHS_SUFFIX_LIST = [
                             HIB_AUTHOR_XPATH1, HIB_AUTHOR_XPATH2, HIB_AUTHOR_XPATH3, HIB_AUTHOR_XPATH4, HIB_AUTHOR_XPATH5,
