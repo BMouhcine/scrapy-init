@@ -12,7 +12,7 @@
 
 
 
-# Purpose of the project:
+# Purpose of the project:
 
 ### The main purpose of this project is to scrape articles existing in theses two websites: *Hespress* & Hibapress.
 
@@ -105,7 +105,7 @@ $ scrapy crawl hespress
 For *Hibapress*, the most of the author names are scraped correctly. But there's always an issue regarding this type of data: The author's name does not explicitly exist in a classified or identified HTML tag that contains the author's name, nor, can be found in a recognizable/repeated HTML tags pattern.
 For the overwhelming majority of the articles, the author's name does exist under two main formats:
 
-### 1.   1st format:
+### 1.   1st format:
 
 ```
 <input type="hidden" name="_wp_http_referer" value="/details-XXXXXX.html">
@@ -115,7 +115,7 @@ For the overwhelming majority of the articles, the author's name does exist unde
 ...
 ```
 
-### 2.   2nd format:
+### 2.   2nd format:
 
 ```
 <input type="hidden" name="_wp_http_referer" value="/details-XXXXXX.html">
@@ -177,10 +177,3 @@ $ python hibdate_parser.py
 ```
 
 
-
-
-
-
-```python
-
-```
