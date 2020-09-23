@@ -83,7 +83,8 @@ or this, to run the *hespress* spider:
 ```
 $ scrapy crawl hespress
 ```
-
+[IMPORTANT](red)
+**IMPORTANT**
 > The integer values assigned to pipeline classes in the sloc `settings.py:67` setting determine the order in which they run: items go through from lower valued to higher valued classes. The pipeline class associated to the spider to be run must have the lowest integer value.  
 > In `settings.py:67`
 ```
