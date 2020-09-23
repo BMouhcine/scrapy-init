@@ -17,7 +17,8 @@ class HespressSpider(scrapy.Spider):
         #req = [Request(self.start_urls[0]+url) for url in res[1:-1]]
         categories = response.xpath(xp.HES_NAV_XPATH).extract()[1:-5]
         navigation = []
-        for numpage in range(1, 11):
+        numpages = 11
+        for numpage in range(1, numpages):
             for cat in categories:
                 cat = cat.replace('.' + str(1) + '.html', '.' +str(numpage)+ '.html')
                 navigation.append(cat)

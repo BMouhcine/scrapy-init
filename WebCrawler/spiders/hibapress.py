@@ -13,8 +13,9 @@ class HibapressSpider(scrapy.Spider):
     idx_nav_dict = {'3': 'سياسة', '19': 'حوادث', '8': 'فن', '24': 'مهجر', '22': 'رياضة', '10': 'بلا حدود', '2': 'مجتمع', '20': 'إقتصاد', '9': 'آراء', '99': 'متفرقات', '6': 'شؤون دينية', '11': 'فيديوهات'}
     def parse(self, response):
         nav_list = []
+        numpages = 3
         for nav_element in response.xpath(xp.HIB_NAV_XPATH):
-            for numpage in range(1, 3):
+            for numpage in range(1, numpages):
                 nav_list.append(nav_element.xpath('@href').extract_first() + '/page/' + str(numpage))
         return (Request(nav, callback=self.parse_articles, headers=response.headers) for nav in nav_list)
 
