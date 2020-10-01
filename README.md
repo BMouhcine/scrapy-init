@@ -2,7 +2,7 @@
 
 # Description
 
-#### This project is made using the framework **Scrapy v1.6.0**  to scrape data from two main websites: *Hespress* & Hibapress.
+#### This project is made using the framework **Scrapy v1.6.0** under **Python v3.8.4** to scrape data from two main websites: *Hespress* & Hibapress.
 ##### These data relate primarily to existing articles in each of the two websites mentioned.
 
 
